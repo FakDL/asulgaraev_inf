@@ -1,0 +1,6 @@
+SELECT count(maker)
+FROM product
+WHERE maker IN (SELECT maker 
+FROM product
+GROUP BY maker
+HAVING count(model) = 1)

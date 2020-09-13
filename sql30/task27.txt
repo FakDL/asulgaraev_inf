@@ -1,0 +1,7 @@
+SELECT maker, AVG(hd)
+FROM pc, product p 
+WHERE p.model = pc.model AND
+p.maker IN (SELECT maker
+FROM product
+WHERE type = 'printer')
+GROUP BY maker

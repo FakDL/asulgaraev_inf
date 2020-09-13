@@ -1,0 +1,9 @@
+SELECT maker
+FROM product p, laptop l
+WHERE p.model = l.model AND
+speed >= 750
+INTERSECT
+SELECT maker
+FROM product p, pc
+WHERE p.model = pc.model AND
+speed >= 750

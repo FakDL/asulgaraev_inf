@@ -1,0 +1,4 @@
+SELECT p.maker, MAX(pc.price)
+FROM product p, pc 
+WHERE p.model = pc.model
+GROUP BY maker

@@ -1,0 +1,4 @@
+SELECT DISTINCT p.maker, AVG(l.screen) 
+FROM product p, laptop l
+WHERE p.model = l.model
+GROUP BY p.maker

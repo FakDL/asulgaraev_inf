@@ -1,0 +1,5 @@
+SELECT DISTINCT product.type, laptop.model, laptop.speed 
+FROM product, laptop
+WHERE laptop.model = product.model AND 
+speed < (SELECT MIN(speed) FROM pc) AND
+product.type = 'laptop'
