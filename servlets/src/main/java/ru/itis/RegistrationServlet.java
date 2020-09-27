@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@WebServlet("/reg")
+@WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
     private static final String DB_USERNAME = "postgres";
