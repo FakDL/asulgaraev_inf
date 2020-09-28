@@ -18,18 +18,19 @@ public class RegistrationServlet extends HttpServlet {
     private static final String DB_PASSWORD = "20123124";
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("WEB-INF/html/registration.html").forward(req, resp);
+    }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-
-        System.out.println("AAAAAAAAAAAAAAA");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
             insertToDB(request);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
     }
     public void insertToDB(HttpServletRequest request) throws SQLException {
         Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
