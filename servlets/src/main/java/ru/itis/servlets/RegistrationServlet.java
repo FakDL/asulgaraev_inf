@@ -1,4 +1,6 @@
-package ru.itis;
+package ru.itis.servlets;
+
+import ru.itis.repositories.UsersRepositoryJdbcImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,15 +39,7 @@ public class RegistrationServlet extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
-        String sqlInsertUser = "insert into users( email, username, password) " +
-                "values ( ?, ?, ?)";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sqlInsertUser);
-        preparedStatement.setString(1, email);
-        preparedStatement.setString(2,username);
-        preparedStatement.setString(3, password);
-
-        preparedStatement.executeUpdate();
+        UsersRepositoryJdbcImpl usersRepositoryJdbc = new UsersRepositoryJdbcImpl(connection);
+        usersRepositoryJdbc.insertUserToDB(username,email,password);
     }
 }

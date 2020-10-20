@@ -1,4 +1,11 @@
-C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\UsersServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\repositories\SimpleJdbcTemplate.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\servlets\AjaxServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\servlets\LoginServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\repositories\UsersRepository.java
 C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\Main.java
-C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\User.java
-C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\RegistrationServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\repositories\UsersRepositoryJdbcImpl.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\models\User.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\repositories\RowMapper.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\servlets\UsersServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\servlets\RegistrationServlet.java
+C:\Users\FakDL\Desktop\3сем\asulgaraev_inf\servlets\src\main\java\ru\itis\repositories\CrudRepository.java

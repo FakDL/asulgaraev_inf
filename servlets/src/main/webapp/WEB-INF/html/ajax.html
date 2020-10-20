@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #myTable th, #myTable td {
+            text-align: left; /* Left-align text */
+            padding: 12px; /* Add padding */
+        }
+
+        #myTable tr {
+            /* Add a bottom border to all table rows */
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+            /* Add a grey background color to the table header and on hover */
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+    </script>
+    <script>
+            function renderTable(users, table) {
+            let innerHtml = '<tr>\n' +
+                '               <th>Username</th>' +
+                '               <th>Email</th>' +
+                '            </tr>';
+
+            for (let i = 0; i < users.length; i++) {
+                innerHtml += '<tr>';
+                innerHtml += '  <td>' + users[i]['username'] + '</td>';
+                innerHtml += '  <td>' + users[i]['email'] +  '</td>';
+                innerHtml += '</tr>';
+            }
+
+            table.html(innerHtml);
+        }
+
+        function sendUser(username){
+            let data = {
+                "username" : username
+            };
+
+            $.ajax({
+                    type: "POST",
+                    url: "/ajax",
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        renderTable(response, $('#table'))
+                    },
+                    dataType: "json",
+                    contentType: "application/json"
+                }
+            );
+        }
+    </script>
+    <title></title>
+
+<h3>
+    Users search
+</h3>
+<input  id="username" name="username" onkeyup="sendUser($('#username').val())">
+<table  id="table">
+
+</table>
+
+</body>
+</html>

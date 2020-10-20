@@ -1,5 +1,12 @@
 ru\itis\Main.class
-ru\itis\UsersServlet.class
-ru\itis\User.class
-ru\itis\RegistrationServlet.class
-ru\itis\User$UserBuilder.class
+ru\itis\models\User.class
+ru\itis\servlets\RegistrationServlet.class
+ru\itis\repositories\RowMapper.class
+ru\itis\repositories\UsersRepository.class
+ru\itis\repositories\SimpleJdbcTemplate.class
+ru\itis\repositories\UsersRepositoryJdbcImpl.class
+ru\itis\servlets\AjaxServlet.class
+ru\itis\servlets\LoginServlet.class
+ru\itis\servlets\UsersServlet.class
+ru\itis\models\User$UserBuilder.class
+ru\itis\repositories\CrudRepository.class
