@@ -1,4 +1,4 @@
-package models;
+package ru.itis.models;
 
 import lombok.*;
 
@@ -7,9 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Builder
 public class Service {
-    Integer id;
-    String disease;
+    Long id;
+    String name;
     Integer price;
     Integer department_id;
 }

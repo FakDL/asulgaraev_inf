@@ -5,13 +5,6 @@ import ru.itis.dto.UserForm;
 import ru.itis.models.User;
 import ru.itis.repositories.UsersRepository;
 
-/**
- * 26.10.2020
- * 05. Skeleton
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 public class SignUpServiceImpl implements SignUpService {
 
     private UsersRepository usersRepository;
@@ -24,7 +17,10 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public void signUp(UserForm form) {
-        // passwordEncoder.matches("qwerty007", "$2a$10$YT4skQkJ84utGSRs5uiIo.5GFTSpxVqKtp6ywpu7HoFTnVVKRMVfu");
+        if (usersRepository.findByEmail(form.getEmail()).isPresent()) {
+            System.out.println("Same email");
+            return;
+        }
         User user = User.builder()
                 .email(form.getEmail())
                 .firstName(form.getFirstName())

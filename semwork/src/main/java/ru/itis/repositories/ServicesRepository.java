@@ -1,2 +1,4 @@
-package ru.itis.repositories;public interface ServiceRepository {
+package ru.itis.repositories;
+
+public interface ServicesRepository extends CrudRepository {
 }

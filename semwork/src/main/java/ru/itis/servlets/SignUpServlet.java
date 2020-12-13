@@ -12,13 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * 26.10.2020
- * 05. Skeleton
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
@@ -46,6 +39,6 @@ public class SignUpServlet extends HttpServlet {
                 .build();
 
         signUpService.signUp(form);
-        resp.sendRedirect("/signUp"); // location=/signUp
+        resp.sendRedirect("/signUp");
     }
 }

@@ -4,28 +4,20 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import ru.itis.models.User;
-
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * 26.10.2020
- * 05. Skeleton
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     //language=SQL
-    private static final String SQL_SELECT_BY_EMAIL = "select * from account where email = ?";
+    private static final String SQL_SELECT_BY_EMAIL = "select * from users where email = ?";
 
     //language=SQL
-    private static final String SQL_SELECT_ALL = "select * from account";
+    private static final String SQL_SELECT_ALL = "select * from users";
 
     //language=SQL
-    private static final String SQL_INSERT = "insert into account(email, first_name, last_name, hash_password) " +
+    private static final String SQL_INSERT = "insert into users(email, first_name, last_name, hash_password) " +
             "values (?, ?, ?, ?)";
 
     private JdbcTemplate jdbcTemplate;
@@ -34,7 +26,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    private RowMapper<User> userRowMapper = (row, rowNumber) -> User.builder()
+    private final RowMapper<User> userRowMapper = (row, rowNumber) -> User.builder()
             .id(row.getLong("id"))
             .firstName(row.getString("first_name"))
             .lastName(row.getString("last_name"))

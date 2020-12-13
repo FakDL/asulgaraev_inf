@@ -1,4 +1,4 @@
-package models;
+package ru.itis.models;
 
 import lombok.*;
 
@@ -7,7 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Builder
 public class Department {
-    Integer id;
+    Long id;
     String name;
 }

@@ -15,13 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * 28.10.2020
- * 05. Skeleton
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 @WebServlet("/signIn")
 public class SignInServlet extends HttpServlet {
     private SignInService signInService;
@@ -48,7 +41,6 @@ public class SignInServlet extends HttpServlet {
         UserDto userDto = signInService.signIn(form);
 
         if (userDto != null) {
-            // взяли существующую или сделали новую
             HttpSession session = req.getSession();
             session.setAttribute("user", userDto);
             resp.sendRedirect("/profile");

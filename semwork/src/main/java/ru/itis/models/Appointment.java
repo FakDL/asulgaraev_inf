@@ -1,4 +1,4 @@
-package models;
+package ru.itis.models;
 
 import lombok.*;
 
@@ -7,10 +7,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Builder
 public class Appointment {
-    Integer id;
-    Integer customer_id;
-    Integer doctor_id;
-    Integer service_id;
-    String time;
+    Long id;
+    Long customer_id;
+    Long doctor_id;
+    Long service_id;
+    String date;
 }

@@ -1,2 +1,4 @@
-package ru.itis.repositories;public interface DepartmentRepository {
+package ru.itis.repositories;
+
+public interface DepartmentRepository extends CrudRepository{
 }
