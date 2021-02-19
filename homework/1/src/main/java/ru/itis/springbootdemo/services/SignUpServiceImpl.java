@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.itis.springbootdemo.dto.UserForm;
+import ru.itis.springbootdemo.models.State;
 import ru.itis.springbootdemo.models.User;
 import ru.itis.springbootdemo.repositories.UsersRepository;
+
+import java.util.UUID;
 
 @Component
 public class SignUpServiceImpl implements SignUpService {
@@ -16,6 +19,8 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private MailsService mailsService;
 
     @Override
     public void signUp(UserForm form) {
@@ -24,8 +29,12 @@ public class SignUpServiceImpl implements SignUpService {
                 .password(passwordEncoder.encode(form.getPassword()))
                 .firstName(form.getFirstName())
                 .lastName(form.getLastName())
+                .state(State.NOT_CONFIRMED)
+                .confirmCode(UUID.randomUUID().toString())
                 .build();
 
         usersRepository.save(newUser);
+
+        mailsService.sendEmailForConfirm(newUser.getEmail(), newUser.getConfirmCode());
     }
 }

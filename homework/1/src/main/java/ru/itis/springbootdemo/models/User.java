@@ -23,4 +23,10 @@ public class User {
     private String password;
     private String lastName;
     private String firstName;
+
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
+
+    private String confirmCode;
 }
