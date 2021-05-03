@@ -9,4 +9,5 @@ public class UserForm {
     private String password;
     private String lastName;
     private String firstName;
+    private String phone;
 }

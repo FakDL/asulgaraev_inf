@@ -1,10 +1,10 @@
-<!doctype html>
 <html>
 <head>
-    <title>Регистрация</title>
+    <title>Войти</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../login.css">
 </head>
 <body>
 <div id="login">
@@ -13,20 +13,8 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" action="/signUp" method="post">
-                        <h3 class="text-center text-info">Регистрация</h3>
-                        <div class="form-group">
-                            <label for="firstName" class="text-info">Имя:</label><br>
-                            <input type="text" name="firstName" id="firstName" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="text-info">Фамилия:</label><br>
-                            <input type="text" name="lastName" id="lastName" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName" class="text-info">Номер телефона:</label><br>
-                            <input type="text" name="phone" id="phone" class="form-control">
-                        </div>
+                    <form id="login-form" class="form" action="/signIn" method="post">
+                        <h3 class="text-center text-info">Войти</h3>
                         <div class="form-group">
                             <label for="email" class="text-info">Почта:</label><br>
                             <input type="email" name="email" id="email" class="form-control">
@@ -36,9 +24,9 @@
                             <input type="password" name="password" id="password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Зарегистрироваться">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Войти">
                             <div id="register-link" class="text-right">
-                                <a href="/signIn" class="text-info">Войти</a>
+                                <a href="/signUp" class="text-info">Зарегистрироваться</a>
                             </div>
                         </div>
                     </form>

@@ -5,7 +5,6 @@ import ru.itis.repositories.AppointmentRepository;
 import ru.itis.repositories.DoctorsRepository;
 import ru.itis.repositories.ServicesRepository;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 

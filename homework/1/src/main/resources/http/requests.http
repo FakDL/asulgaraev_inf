@@ -1,1 +1,4 @@
+GET localhost:8080/departments/search?page=0&size=2
+
+###
 GET localhost:8080/departments/1

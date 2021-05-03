@@ -27,15 +27,11 @@ public class AjaxServlet extends HttpServlet {
     private UsersRepositoryJdbcImpl usersRepository;
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    @SneakyThrows
     @Override
     public void init() {
-        try {
-            Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             usersRepository = new UsersRepositoryJdbcImpl(connection);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new IllegalStateException(e);
-        }
     }
 
     @SneakyThrows

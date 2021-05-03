@@ -31,8 +31,7 @@ public class LoginServlet extends HttpServlet {
                     resp.sendRedirect("/users");
                 }
             }
-            req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
-        }
+        } else req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
     }
 
     @SneakyThrows

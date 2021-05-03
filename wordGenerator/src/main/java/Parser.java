@@ -1,2 +1,10 @@
-package PACKAGE_NAME;public class Parser {
+
+
+
+
+public class Parser {
+    public static void main(String[] args) {
+        
+    }
+
 }

@@ -40,7 +40,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .build();
 
     public List<User> findAllByUsernameStartingWith(String username) {
-        return jdbcTemplate.queryForList(SQL_FIND_ALL_USERS_BY_USERNAME, usersRowMapper, username + "%");
+        return jdbcTemplate.queryForList(SQL_FIND_ALL_USERS_BY_USERNAME, usersRowMapper, "%" + username + "%");
     }
 
     public void setUuidByUsername(String uuid, String username) throws SQLException {

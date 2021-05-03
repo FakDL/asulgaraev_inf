@@ -8,6 +8,8 @@ import ru.itis.springbootdemo.models.State;
 import ru.itis.springbootdemo.models.User;
 import ru.itis.springbootdemo.repositories.UsersRepository;
 
+import java.util.Optional;
+
 @Controller
 public class ConfirmController {
 
@@ -16,7 +18,7 @@ public class ConfirmController {
 
     @GetMapping("/confirm/{code}")
     public String confirmUser(@PathVariable("code") String code) {
-        User user = usersRepository.findByConfirmCode(code);
+        User user = usersRepository.findByConfirmCode(code).orElse(User.builder().build());
         user.setState(State.CONFIRMED);
         usersRepository.save(user);
         return "confirmed";
