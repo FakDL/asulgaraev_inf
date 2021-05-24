@@ -45,6 +45,12 @@ public class DepartmentsController {
         return "departments_page";
     }
 
+    @CrossOrigin("http://localhost:8070")
+    @GetMapping("/departments-js")
+    public ResponseEntity<List<Department>> getDepartments() {
+        return ResponseEntity.ok(departmentsService.getAll());
+    }
+
 
 }
 

@@ -10,4 +10,6 @@ public interface DepartmentsService {
     Department getById(Long departmentId);
 
     DepartmentsPage search(Integer size, Integer page, String query, String sort, String direction);
+
+    List<Department> getAll();
 }
