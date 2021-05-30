@@ -28,42 +28,33 @@
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
     <script>
-        function renderList() {
+        function renderList(userId) {
             let innerHtml = ''
             <#list appointments as appointment>
-            innerHtml +=
-                '<li class="card" id="${appointment.id}"> ${appointment.date}:00 '
-            <#list doctors as doctor>
-            if (${doctor.id} === ${appointment.doctor_id}) {
-                innerHtml += '${doctor.lastName} ${doctor.firstName} '
-            }
-            </#list>
-            <#list services as service>
-            if (${service.id} === ${appointment.service_id}) {
-                innerHtml += '${service.name} ${service.price} руб.'
-            }
-            </#list>
-            innerHtml +=
-                ' <form onsubmit="sendReq(${appointment.id})">' +
-                '<input type="submit" class="btn btn-info btn-md" value="Отменить запись"></input></form></li>'
-            document.getElementById('list').innerHTML += innerHtml
-            innerHtml = ''
+                if (userId === ${appointment.customer.id}) {
+                    console.log('${appointment.doctor.department.name}')
+                    innerHtml +=
+                        '<li class="card" id="${appointment.id}"> ${appointment.date}:00 '
+                    innerHtml += '${appointment.doctor.lastName} ${appointment.doctor.firstName} '
+                    innerHtml += '${appointment.service.name} ${appointment.service.price} руб.'
+                    innerHtml +=
+                        ' <form onsubmit="sendReq(${appointment.id})">' +
+                        '<input type="submit" class="btn btn-info btn-md" value="Отменить запись"></input></form></li>'
+                    document.getElementById('list').innerHTML += innerHtml
+                    innerHtml = ''
+                }
             </#list>
         }
     </script>
     <script>
         function sendReq(appId) {
 
-            let data = {
-                "appId": appId
-            };
-
             $.ajax({
                 type: "POST",
-                url: "/profile",
-                data: JSON.stringify(data),
+                url: "/profile/ajax",
+                data: JSON.stringify(appId),
                 success: function (response) {
-                    renderList()
+                    renderList(response)
                 },
                 dataType: "json",
                 contentType: "application/json"
@@ -78,32 +69,30 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<#--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">-->
-<#--    <a href="/homepage" class="navbar-brand">Поликлиника</a>-->
-<#--    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">-->
-<#--        <span class="navbar-toggler-icon"></span>-->
-<#--    </button>-->
-<#--    <div class="collapse navbar-collapse" id="navbarMenu">-->
-<#--        <ul class="navbar-nav">-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/departments" class="nav-link">Доктора</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/appointments" class="nav-link">Запись</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/services" class="nav-link">Услуги</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/profile" class="nav-link">Профиль</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/about" class="nav-link">Контакты</a>-->
-<#--            </li>-->
-<#--        </ul>-->
-<#--    </div>-->
-<#--</nav>-->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a href="/about" class="navbar-brand">Поликлиника</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/departments" class="nav-link">Отделения</a>
+            </li>
+            <li class="nav-item">
+                <a href="/appointments" class="nav-link">Запись</a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a href="/about" class="nav-link">Контакты</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <h1 class="text-center">Личный кабинет</h1>
+
 <div class="text-center">
     <div>
         <h3> Имя: ${user.firstName}</h3>
@@ -120,7 +109,7 @@
 
 <ul class="container" id="list">
 </ul>
-<script>renderList()</script>
+<script>renderList(${user.id})</script>
 </body>
 </html>
 

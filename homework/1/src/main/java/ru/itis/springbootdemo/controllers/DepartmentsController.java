@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.itis.springbootdemo.dto.DepartmentsPage;
 import ru.itis.springbootdemo.models.Department;
+import ru.itis.springbootdemo.models.PageInfo;
 import ru.itis.springbootdemo.services.DepartmentsService;
 
 import java.util.ArrayList;
@@ -22,6 +24,13 @@ public class DepartmentsController {
     public String getDepartmentsPage(Model model) {
         model.addAttribute("departmentList", departmentsService.getAllDepartments());
         return "departments_page";
+    }
+
+    @PostMapping("/departments/ajax")
+    public void getDepartments(Model model, @RequestBody PageInfo pageInfo) {
+        model.addAttribute("departmentList", departmentsService.search(
+                pageInfo.getSize(), pageInfo.getPagesCount(), "", null, null)
+                .getDepartments());
     }
 
     @GetMapping("/departments/{department-id}")

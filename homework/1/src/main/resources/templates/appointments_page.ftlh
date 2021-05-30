@@ -25,12 +25,12 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script>
         function setDateLimit(id) {
-            var today = new Date()
-            var nMonth
-            var dd = today.getDate()
-            var mm = today.getMonth() + 1 //January is 0
-            var nm, ny
-            var yyyy = today.getFullYear()
+            let today = new Date();
+            let nMonth;
+            let dd = today.getDate();
+            let mm = today.getMonth() + 1; //January is 0
+            let nm, ny;
+            const yyyy = today.getFullYear();
 
             if (mm === 12) {
                 nm = '01'
@@ -92,7 +92,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/appointment?action=ajax",
+                url: "/appointments/ajax",
                 data: JSON.stringify(data),
                 success: function (response) {
                     renderList(response, listId)
@@ -108,36 +108,33 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<#--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">-->
-<#--    <a href="/homepage" class="navbar-brand">Поликлиника</a>-->
-<#--    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">-->
-<#--        <span class="navbar-toggler-icon"></span>-->
-<#--    </button>-->
-<#--    <div class="collapse navbar-collapse" id="navbarMenu">-->
-<#--        <ul class="navbar-nav">-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/departments" class="nav-link">Доктора</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/appointment" class="nav-link">Запись</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/services" class="nav-link">Услуги</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/profile" class="nav-link">Профиль</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item">-->
-<#--                <a href="${pageContext.request.contextPath}/about" class="nav-link">Контакты</a>-->
-<#--            </li>-->
-<#--        </ul>-->
-<#--    </div>-->
-<#--</nav>-->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a href="/about" class="navbar-brand">Поликлиника</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/departments" class="nav-link">Отделения</a>
+            </li>
+            <li class="nav-item">
+                <a href="/appointments" class="nav-link">Запись</a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a href="/about" class="nav-link">Контакты</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <h2 class="text-center">Записаться к врачу</h2>
 <div class="container">
     <#list doctors as doc>
-        <script>console.log(${doc})</script>
-        <form action="/appointment?action=form" method="post">
+        <script>console.log(${doc.id})</script>
+        <form action="/appointments/create" method="post">
             <p class="card">
                 Врач: ${doc.lastName} ${doc.firstName} <br>
                 Выберите услугу:
